@@ -15,7 +15,18 @@ class Task {
   }
 
   static async findAll() {
-    const result = await db.query("SELECT * FROM tasks");
+    const result = await db.query(`
+       SELECT
+      t.id,
+      t.name,
+      t.status,
+      t.deadline,
+      t.assigned_to,
+      u.name AS assigned_to_name
+    FROM tasks t
+    JOIN users u ON t.assigned_to = u.id
+    ORDER BY t.id DESC
+    `);
     return result.rows;
   }
 

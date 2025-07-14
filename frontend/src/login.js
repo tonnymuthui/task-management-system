@@ -1,6 +1,20 @@
 const loginForm = document.getElementById("login-form");
 const registerForm = document.getElementById("register-form");
 
+document.getElementById('login-toggle').addEventListener('click', function() {
+  document.getElementById('login-card').classList.add('active');
+  document.getElementById('register-card').classList.remove('active');
+  this.classList.add('active');
+  document.getElementById('register-toggle').classList.remove('active');
+});
+
+document.getElementById('register-toggle').addEventListener('click', function() {
+  document.getElementById('register-card').classList.add('active');
+  document.getElementById('login-card').classList.remove('active');
+  this.classList.add('active');
+  document.getElementById('login-toggle').classList.remove('active');
+});
+
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
