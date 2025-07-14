@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+debug.log
+
+# Editor folders
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Coverage/test
+coverage/
+*.lcov
+
+# Database dumps
+*.sql
+*.sqlite
+
+# Build output
+dist/
