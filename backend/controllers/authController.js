@@ -10,10 +10,12 @@ const register = async (req, res) => {
     if (existing) return res.status(400).json({ message: "Email already in use" });
 
     const hashed = await bcrypt.hash(password, 10);
-    const newUser = await User.create(name, email, hashed);
+    const newUser = await User.create(name, email, hashed, "user");
+
 
     res.status(201).json({ message: "User registered", user: newUser });
   } catch (err) {
+    console.error("REGISTER ERROR! :", err);
     res.status(500).json({ error: err.message });
   }
 };
@@ -33,6 +35,7 @@ const login = async (req, res) => {
 
     res.status(200).json({ token, role: user.role });
   } catch (err) {
+    console.error("LOGIN ERROR ! :", err);
     res.status(500).json({ error: err.message });
   }
 };
