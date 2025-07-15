@@ -5,7 +5,7 @@ const express = require("express");
 const cors = require("cors");
 //
 const cors = require("cors");
-app.use(cors({ origin: "https://<your-frontend-domain>.vercel.app" }));
+app.use(cors({ origin: "https://task-management-system-gray-xi.vercel.app/" }));
 
 //
 
