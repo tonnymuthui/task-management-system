@@ -17,7 +17,7 @@ window.onload = () => {
 
 // funct 4 Loading current user Tasks
 async function loadMyTasks() {
-  const res = await fetch("http://localhost:3000/api/tasks/my-tasks", { headers });
+  const res = await fetch("https://task-management-system-yefx.onrender.com/api/tasks/my-tasks", { headers });
   const tasks = await res.json();
 
   let html = `<table><tr><th>Task</th><th>Status</th><th>Deadline</th><th>Update</th></tr>`;
@@ -45,7 +45,7 @@ async function loadMyTasks() {
       const id = e.target.dataset.id;
       const status = e.target.value;
 
-      await fetch(`http://localhost:3000/api/tasks/${id}/status`, {
+      await fetch(`https://task-management-system-yefx.onrender.com/api/tasks/${id}/status`, {
         method: "PUT",
         headers,
         body: JSON.stringify({ status }),

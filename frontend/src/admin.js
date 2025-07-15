@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 if (!token) window.location.href = "index.html";
 
-// Logout button
+// Logout btnn
 document.getElementById("logout-btn").addEventListener("click", () => {
   localStorage.removeItem("token");
   window.location.href = "index.html";
@@ -17,10 +17,10 @@ window.addEventListener("load", () => {
   loadTasks();
 });
 
-// ——— USERS ———
+//
 
 async function loadUsers() {
-  const res = await fetch("http://localhost:3000/api/users", { headers });
+  const res = await fetch("https://task-management-system-yefx.onrender.com/api/users", { headers });
   const users = await res.json();
 
   let html = `
@@ -46,7 +46,7 @@ async function loadUsers() {
   html += `</tbody></table>`;
   document.getElementById("users-list").innerHTML = html;
 
-  // Attach event delegation
+  
   document.getElementById("users-table").addEventListener("click", handleUserTableClick);
 }
 
@@ -54,19 +54,19 @@ async function handleUserTableClick(e) {
   const id = e.target.dataset.id;
   if (e.target.classList.contains("delete-user")) {
     if (!confirm("Are you sure you want to delete this user?")) return;
-    await fetch(`http://localhost:3000/api/users/${id}`, {
+    await fetch(`https://task-management-system-yefx.onrender.com/api/users/${id}`, {
       method: "DELETE",
       headers,
     });
     loadUsers();
   }
   else if (e.target.classList.contains("edit-user")) {
-    // Prompt for new values (you could also show a form)
+    
     const newName = prompt("New name?");
     const newEmail = prompt("New email?");
     const newRole = prompt("New role (admin/user)?");
     if (!newName || !newEmail || !newRole) return;
-    await fetch(`http://localhost:3000/api/users/${id}`, {
+    await fetch(`https://task-management-system-yefx.onrender.com/api/users/${id}`, {
       method: "PUT",
       headers,
       body: JSON.stringify({ name: newName, email: newEmail, role: newRole }),
@@ -75,13 +75,13 @@ async function handleUserTableClick(e) {
   }
 }
 
-// Create user
+
 document.getElementById("user-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const name = document.getElementById("new-user-name").value;
   const email = document.getElementById("new-user-email").value;
   const password = document.getElementById("new-user-password").value;
-  await fetch("http://localhost:3000/api/users", {
+  await fetch("https://task-management-system-yefx.onrender.com/api/users", {
     method: "POST",
     headers,
     body: JSON.stringify({ name, email, password, role: "user" }),
@@ -89,14 +89,14 @@ document.getElementById("user-form").addEventListener("submit", async (e) => {
   loadUsers();
 });
 
-// ——— TASKS ———
+
 
 document.getElementById("task-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const name = document.getElementById("task-title").value;
   const userEmail = document.getElementById("task-user").value;
   const deadline = document.getElementById("task-deadline").value;
-  await fetch("http://localhost:3000/api/tasks", {
+  await fetch("https://task-management-system-yefx.onrender.com/api/tasks", {
     method: "POST",
     headers,
     body: JSON.stringify({ name, userEmail, deadline }),
@@ -105,7 +105,7 @@ document.getElementById("task-form").addEventListener("submit", async (e) => {
 });
 
 async function loadTasks() {
-  const res = await fetch("http://localhost:3000/api/tasks", { headers });
+  const res = await fetch("https://task-management-system-yefx.onrender.com/api/tasks", { headers });
   const tasks = await res.json();
   let html = `
     <table>

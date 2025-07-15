@@ -21,7 +21,7 @@ loginForm.addEventListener("submit", async (e) => {
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
 
-  const res = await fetch("http://localhost:3000/api/auth/login", {
+  const res = await fetch("https://task-management-system-yefx.onrender.com/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -48,7 +48,7 @@ registerForm.addEventListener("submit", async (e) => {
   const email = document.getElementById("register-email").value;
   const password = document.getElementById("register-password").value;
 
-  const res = await fetch("http://localhost:3000/api/auth/register", {
+  const res = await fetch("https://task-management-system-yefx.onrender.com/api/auth/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, password }),
